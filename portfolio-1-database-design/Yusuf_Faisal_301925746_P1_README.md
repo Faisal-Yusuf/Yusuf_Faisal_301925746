@@ -21,6 +21,8 @@ Business Rules
 1. Customers ID is always Unique for easy identification.
 2. An order should never exist without a customer making them.
 3. A shipment cannot exist without an Order.
-4. A shipment status changes are recorded with a time, from dispatch to delivery or collection.
+4. A shipment status changes are recorded with a time, from dispatch  to delivery or collection.
+
 5. Every shipment must come from a warehouse
 6. Each shipment is either home delivery or store delivery.
+7. A customer can place an order containing multiple watches.
