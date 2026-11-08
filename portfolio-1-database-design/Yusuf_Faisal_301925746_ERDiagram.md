@@ -107,27 +107,7 @@ erDiagram
     LOCATION ||--o{ SHIPMENT : dispatches
 ```
 
-## 2. Explanation of Database Keys
-
-**Primary Key (PK)**
-
-A Primary Key uniquely identifies each record in a database table. It prevents two records from having the same identifying value.
-
-For example, SupplierID uniquely identifies every supplier registered in the FAHAJ database.
-
-**Foreign Key (FK)**
-
-A Foreign Key is an attribute that references the Primary Key of another table. It establishes a relationship between two tables.
-
-For example, SupplierID in the Component table references SupplierID in the Supplier table. This allows FAHAJ to identify which supplier provides each component.
-
-**Unique Key (UK)**
-
-A Unique Key ensures that duplicate values are not allowed in a particular field.
-
-For example, the Email field in the Customer table must be unique so that two customer accounts cannot use the same email address.
-
-## 3. Explanation of Relationship Symbols
+## 2. Explanation of Relationship Symbols
 
 The ER diagram uses Crow's Foot notation to represent relationships between entities.
 

@@ -4,11 +4,20 @@
 A relational database's keys and constraints are crucial components because they provide record identification, table relationships, and data accuracy. Primary keys, foreign keys, and other restrictions are employed in the FAHAJ database to guarantee that records are uniquely identifiable and that table relationships are consistent.
 
 ## 1. Primary Keys (PK)
-A primary key uniquely identifies each record in a database table. It prevents duplicate records and does not allow NULL values. Each table in the FAHAJ database has a primary key.
+A Primary Key uniquely identifies each record in a database table. It prevents two records from having the same identifying value.
+
+For example, SupplierID uniquely identifies every supplier registered in the FAHAJ database.
 
 ## 2. Foreign Keys (FK)
-Foreign keys establish relationships between tables by referencing primary keys in other tables. They help maintain referential integrity by ensuring that referenced records exist.
+A Foreign Key is an attribute that references the Primary Key of another table. It establishes a relationship between two tables.
 
+For example, SupplierID in the Component table references SupplierID in the Supplier table. This allows FAHAJ to identify which supplier provides each component.
+
+
+## 3. Unique Key (UK)
+A Unique Key ensures that duplicate values are not allowed in a particular field.
+
+For example, the Email field in the Customer table must be unique so that two customer accounts cannot use the same email address.
 
 
 ## Other Database Constraints
