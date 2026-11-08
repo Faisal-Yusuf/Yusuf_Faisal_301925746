@@ -25,4 +25,7 @@ Business Rules
 
 5. Every shipment must come from a warehouse
 6. Each shipment is either home delivery or store delivery.
-7. A customer can place an order containing multiple watches.
+7. 
+8. A standard watch doesnt need a customization record. We only create one when the customer requests modifications or an original design.
+
+9. Online orders cannot be made without creating an account
