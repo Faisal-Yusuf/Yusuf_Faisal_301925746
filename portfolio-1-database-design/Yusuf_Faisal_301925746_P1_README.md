@@ -12,10 +12,10 @@ FAHAJ produces a standard range of watches and accepts Custom watch designs base
 Customers, store staff, Management, warehouse staff, production staff, procurement staff, sales staff.
 
 ## Major Data to be stored
-Suppliers, components, warehouses and stores, inventory, customers, customer orders, watch models, customization specifications, production records, payment, shipment.
+Suppliers, components, locations, inventory, customers, customers, orders, order item, watch models, customization specifications, production records, payment, shipments.
 
 ## Key Operations the database will support
-Create an Account, Place an Order online, Place store order, record payment, Receive components, update stock, Create shipment, update delivery status, Run reports.
+Create an Account, Place an order online or at store, Record payment, Record custom specifications, Update stock, Create and track shipment, Receive components, Run reports.
 
 Business Rules
 1. Customers ID is always Unique for easy identification.
