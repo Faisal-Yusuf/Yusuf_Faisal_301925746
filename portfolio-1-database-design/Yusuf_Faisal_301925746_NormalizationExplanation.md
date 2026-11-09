@@ -2,15 +2,15 @@
 
 ## 1. Introduction
 
-Database normalisation is the process of organising information into related tables to reduce unnecessary data duplication and improve data integrity. It helps prevent insertion, update and deletion anomalies, which are problems that occur when poorly organised data is added, changed or removed.
+Normalisation is the process of structuring data into related tables to minimise data duplication and ensure data integrity. It helps to avoid insertion, update and deletion anomalies, problems that can arise when data is poorly organised and is inserted, updated or deleted.
 
-This explanation uses FAHAJ, a wristwatch manufacturing and distribution company, to demonstrate the stages of normalisation: First Normal Form (1NF), Second Normal Form (2NF) and Third Normal Form (3NF).
+The following explanation will be based on a wristwatch manufacturing and distribution company called FAHAJ. This will illustrate the stages of normalisation: First Normal Form (1NF), Second Normal Form (2NF) and Third Normal Form (3NF).
 
-The examples use fictional customers, orders and watch models to demonstrate how the database structure changes at each stage.
+The examples are based on fictional customers, orders and watch models to illustrate the changes in the database structure at every step.
 
 ## 2. Starting Record: Unnormalised Data
 
-Before normalisation, customer order information may be stored in one record, with several ordered watches grouped together in a repeating list.
+Prior to normalisation, customer order information might be held in a single record while multiple watches ordered by a customer could be listed in a repeating list.
 
 For example:
 
@@ -19,17 +19,17 @@ For example:
 | 5001    | 2026-10-12 | 101        | Amina Bello  | [amina@example.com](mailto:amina@example.com)   | (301, Classic Silver, 1, 85000); (302, Classic Black, 1, 90000) |
 | 5002    | 2026-10-13 | 102        | Daniel Musa  | [daniel@example.com](mailto:daniel@example.com) | (301, Classic Silver, 2, 85000)                                 |
 
-The `OrderedItems` column contains multiple watch details in a single field. This makes it difficult to retrieve, update or manage individual order items.
+The `OrderedItems` column has several watch details in a single field. This makes it hard to get, update or manage individual order items.
 
-For example, changing the quantity of one watch requires locating the correct item within the repeated list. This structure also makes it difficult to apply database constraints to individual order items.
+For instance, if the quantity of one watch changes, one has to find the appropriate item in the repeated list. This also makes it hard to add database constraints to individual order items.
 
-**The first step is to remove these repeating groups.**
+The first step is to eliminate these repeating groups.
 
 ## 3. First Normal Form (1NF)
 
-A table satisfies First Normal Form when every field contains a single value and there are no repeating groups.
+A table is in 1NF if all of the fields have only one value and there are no repeating groups.
 
-To achieve 1NF, the ordered items are separated into individual records. Each row now represents one watch within a customer order.
+To get to 1NF, the ordered items are broken into separate records. Each row is now a single watch in a customer order.
 
 The resulting table is:
 
@@ -43,35 +43,37 @@ The resulting table is:
 
 **Primary key:** (OrderID, LineNo)
 
-The primary key is a combination of two fields because an order can contain several items. `LineNo` identifies an item within a particular order, while `OrderID` identifies the order itself.
+The primary key consists of two attributes: OrderID and LineNo.
 
-**What changes in 1NF?**
+You have two fields in the primary key because an order may have multiple items: LineNo is used to identify an item in a specific order, and OrderID is used to identify the order.
 
-- The repeated list of ordered watches is replaced with separate rows.
-- Each row contains details for one order item.
-- Each field contains a single value.
+What are the changes in 1NF?
 
-This removes the repeating-group problem and makes individual order items easier to identify and manage.
+Repeated list of ordered watches is replaced by separate rows.
+- An order item is represented by each row.
+- A value is present in each field.
 
-However, customer and order information is still repeated across multiple rows. This leads to the next stage.
+This eliminates the repeating-group problem and simplifies the identification and management of individual order items.
+
+But there is still repeat of customer and order information in multiple rows. This results in the next step.
 
 ## 4. Second Normal Form (2NF)
 
-A table satisfies Second Normal Form when it is already in 1NF and every non-key attribute depends on the entire primary key, not just part of a combined primary key.
+A table is in 2NF if it is in 1NF and each non-key attribute is dependent on the whole primary key, not just a part of a composite primary key.
 
-In the 1NF table, the primary key consists of `OrderID` and `LineNo`.
+The primary key for the 1NF table is OrderID and LineNo.
 
-Some fields depend only on `OrderID`, rather than the entire combination of `OrderID` and `LineNo`.
+Some fields are only required by `OrderID`, and not by the combination of `OrderID` and `LineNo`.
 
 For example:
 
-- OrderDate depends on OrderID.
-- CustomerID depends on OrderID.
-- FirstName, LastName and CustomerEmail are associated with the customer identified by CustomerID.
+OrderDate is dependent on OrderID.
+CustomerID is dependent on OrderID.
+FirstName, LastName and CustomerEmail are related to the Customer identified by CustomerID.
 
-These are partial dependencies. A partial dependency occurs when an attribute depends on only part of a combined primary key.
+These are “partial” dependencies. Partial dependency is when an attribute is dependent on just some of the primary key.
 
-To remove these dependencies, the order information is separated from the individual order-item information.
+These dependencies are eliminated by splitting the order information from the individual order-item information.
 
 **Table 1: CUSTOMER_ORDER_2NF**
 
@@ -90,19 +92,19 @@ To remove these dependencies, the order information is separated from the indivi
 
 The primary key of ORDER_ITEM_2NF is the combination of `OrderID` and `LineNo`. `OrderID` is also a foreign key referencing CUSTOMER_ORDER_2NF.
 
-**What changes in 2NF?**
+**What happens if 2NF changes?**
 
 - Order dates and customer details are moved out of the order-item table.
-- The order header is stored separately from its individual items.
-- Each order item remains linked to its customer order through OrderID.
+Order header is not stored with the individual items.
+- OrderID is a link between each order item and its customer order.
 
-This removes the partial dependency on OrderID and prevents order information from being unnecessarily repeated for every item.
+This eliminates the partial dependency on OrderID and avoids having to repeat order information for each item.
 
-At this stage, the tables satisfy 2NF. However, some information still depends on another non-key field. For example, ModelName and BasePrice depend on ModelID. This is addressed in 3NF.
+The tables are now in 2NF. There are some information that still requires another non-key field. For instance, ModelName and BasePrice are dependent on ModelID. This is solved in 3NF.
 
 ## 5. Third Normal Form (3NF)
 
-A table satisfies Third Normal Form when it is already in 2NF and its non-key attributes depend directly on the primary key rather than on another non-key attribute.
+A table is in 3NF if it is already in 2NF and the non-key attributes of the table depend directly on the primary key and not on any other non-key attribute.
 
 This means that a table should not contain transitive dependencies. A transitive dependency occurs when one non-key attribute determines another non-key attribute.
 

@@ -3,7 +3,9 @@
 
 ## 1. Entity Relationship Diagram
 
-The following Entity Relationship Diagram (ERD) represents the proposed database design for FAHAJ, a wristwatch manufacturing and distribution company. It illustrates the entities, their attributes, primary keys, foreign keys, unique fields and relationships.
+## 1. Entity Relationship Diagram
+
+The following Entity Relationship Diagram (ERD) shows the database design for a wristwatch manufacturing and distributing company called FAHAJ. It illustrates the entities, their attributes, primary keys, foreign keys, unique fields and relationships.
 
 ```mermaid
 erDiagram
@@ -119,51 +121,51 @@ erDiagram
 
 ### 1. Supplier and Component (||--o{)
 
-One supplier can supply zero or many components, while each component must be associated with exactly one supplier.
+Some suppliers may provide none or several components, and each component must be linked to a single supplier.
 
 ### 2. Location and Inventory (||--o{)
 
-One location can have zero or many inventory records, while each inventory record belongs to exactly one location.
+There is zero or more inventory records at one location, and one inventory record at each location.
 
 ### 3. Component and Inventory (||--o{)
 
-One component can appear in zero or many inventory records across different locations, while each component-related inventory record references exactly one component.
+Each component-related inventory record refers to exactly one component, and one component can be present in zero or many inventory records, at different locations.
 
-### 4. Watch Model and Inventory (||--o{)
+### 4. A watch that is used to check the time and inventories.A watch used for checking time and inventories.
 
-One watch model can appear in zero or many inventory records across different locations, while each watch-model-related inventory record references exactly one watch model.
+A watch model can be listed in zero or multiple inventory records at different stores, and each inventory record for a watch model has exactly one watch model.
 
 ### 5. Customer and Customer Order (||--o{)
 
-One customer can place zero or many orders, while each order belongs to exactly one customer.
+A customer may place any number of orders, and each order is placed by exactly one customer.
 
-### 6. Customer Order and Order Item (||--|{)
+### 6. Each customer order contains one or more Order Items.A Customer Order has one or more Order Items.
 
-Each customer order must contain at least one order item, while each order item belongs to exactly one customer order.
+There must be at least one order item in each customer order and each order item must be in exactly one customer order.
 
 ### 7. Watch Model and Order Item (o|--o{)
 
-A watch model can be associated with zero or many order items, while an order item can reference zero or one watch model. This supports both standard or modified watches and fully bespoke watches that do not use an existing model.
+A watch model may have no or many order items, and an order item may have no or one watch model. It is suitable for standard, modified or bespoke watches that are not based on a standard model.
 
 ### 8. Order Item and Customisation Specification (||--o|)
 
-Each order item can have zero or one customisation specification, while each customisation specification belongs to exactly one order item.
+A customisation specification can be attached to zero or one order item, and an order item can have at most one customisation specification.
 
 ### 9. Customer Order and Shipment (||--o{)
 
-One customer order can generate zero or many shipments, while each shipment belongs to exactly one customer order.
+A customer order may have 0 or many shipments, and each shipment is associated with exactly one customer order.
 
 ### 10. Location and Shipment (||--o{)
 
-One location can dispatch zero or many shipments, while each shipment is dispatched from exactly one location.
+A shipment may be sent from a single location or from multiple locations, and each shipment is sent from a single location.
 
 
 ## 3. Understanding the Symbols
 - | represents one.
 - o represents zero or optional.
 - { represents many (the crow's foot).
-The symbols at each end of a relationship describe how many records can be associated with one record at the opposite end.
+The symbols at the ends of a relationship indicate the number of records that can be related to one record at the other end of the relationship.
 
 
 #### 4. Conclusion
-Crow's Foot Notation provides a visual representation of the relationships between the ten entities in the FAHAJ database. It shows the cardinality and optionality of each relationship, making the database structure and its business rules easier to understand.
+The relationships between the ten entities in the FAHAJ database are depicted in the Crow's Foot Notation. It indicates the cardinality and optionality of each relationship, which helps to understand the structure of the database and its business rules.
