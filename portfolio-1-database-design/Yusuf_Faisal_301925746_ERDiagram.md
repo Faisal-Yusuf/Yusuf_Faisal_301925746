@@ -109,19 +109,25 @@ erDiagram
 
 ## 2. Explanation of Relationship Symbols
 
-The ER diagram uses Crow's Foot notation to represent relationships between entities.
+1. Supplier and Component (||--o{)
 
-| Symbol | Meaning |
-|---|---|
-| `||` | Exactly one |
-| `o|` | Zero or one |
-| `o{` | Zero or many |
-| `|{` | One or many |
+One supplier can supply zero or many components, while each component must be associated with exactly one supplier.
 
-For example, the relationship:
+2. Customer and Customer Order (||--o{)
 
-`SUPPLIER ||--o{ COMPONENT`
+One customer can place zero or many orders, while each order belongs to exactly one customer.
 
-means that one supplier can supply zero or many components, while each component must be associated with exactly one supplier.
+3. Customer Order and Order Item (||--|{)
 
-Similarly, one customer can place zero or many orders, but every order must belong to exactly one registered customer.
+Each customer order must contain at least one order item, while each order item belongs to exactly one customer order.
+
+4. Order Item and Customisation Specification (||--o|)
+
+Each order item can have zero or one customisation specification, while each customisation specification belongs to exactly one order item.
+3. Understanding the Symbols
+- | represents one.
+- o represents zero or optional.
+- { represents many (the crow's foot).
+The symbols at each end of a relationship describe the number of records that can be associated with one record at the opposite end.
+4. Conclusion
+Crow's Foot Notation makes it easier to understand the relationships between entities in the FAHAJ database. It clearly shows whether relationships are mandatory, optional, involve a single record or allow multiple records.
