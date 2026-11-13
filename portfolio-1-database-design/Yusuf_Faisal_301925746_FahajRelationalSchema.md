@@ -6,7 +6,7 @@ The schemas used are:
 
 ## 1. SUPPLIER
 
-Stores information about suppliers who provide components used in FAHAJ's watch manufacturing operations.
+Maintains data on suppliers of parts used in the manufacture of watches by FAHAJ.
 
 ### Relational representation:
 SUPPLIER(
@@ -18,7 +18,7 @@ SUPPLIER(
 )
 
 ## 2. COMPONENT
-Stores details of the components supplied to FAHAJ for watch manufacturing.
+Records information about the components provided to FAHAJ for making watches.
 
 ### Relational representation:
 COMPONENT(
@@ -31,6 +31,7 @@ COMPONENT(
 
 ## 3. LOCATION
 Contains information about FAHAJ's warehouses and retail stores.
+
 ### Relational representation:
 LOCATION(
     LocationID PK,
@@ -55,7 +56,7 @@ INVENTORY(
 )
 
 ## 5.  CUSTOMER
-Stores information about customers who register with FAHAJ.
+Records customer data for customers who sign up with FAHAJ.
 
 ### Relational representation:
 CUSTOMER(
@@ -69,7 +70,7 @@ CUSTOMER(
 )
 
 ## 6. CUSTOMER_ORDER
-Records orders placed by registered FAHAJ customers.
+Records orders from registered FAHAJ customers.
 
 ### Relational representation
 CUSTOMER_ORDER(
@@ -80,7 +81,7 @@ CUSTOMER_ORDER(
 )
 
 ## 7. ORDER_ITEM
-Contains details of individual watches included in a customer's order.
+Provides information about the watches that are part of a customer's order.
 
 ### Relational representation
 ORDER_ITEM(
@@ -92,7 +93,7 @@ ORDER_ITEM(
 )
 
 ## 8. WATCH MODEL
-Stores information about the standard watch models manufactured by FAHAJ.
+Contains the information of the normal watch models produced by FAHAJ.
 
 ### Relational representation
 WATCH_MODEL(
@@ -106,7 +107,7 @@ WATCH_MODEL(
 
 
 ## 9. CUSTOMISATION_SPECIFICATION
-Stores the specific design requirements requested by customers for individual order items.
+Holds the design specifications for specific order items as requested by customers.
 
 ### Relational representation
 CUSTOMISATION_SPECIFICATION(
@@ -120,7 +121,7 @@ CUSTOMISATION_SPECIFICATION(
 
 
 ## 10. SHIPMENT
-Records information about customer orders dispatched from FAHAJ locations.
+Records the details of customer orders sent from FAHAJ sites.
 
 ### Relational representation
 SHIPMENT(
@@ -136,4 +137,4 @@ SHIPMENT(
 
 ## Conclusion
 
-By grouping the FAHAJ database's business data into ten linked tables, the relational schema offers an organised depiction of the database. Foreign keys create links between related tables, whereas primary keys uniquely identify records. The organization's main operations, such as supplier administration, inventory monitoring, customer registration, order processing, watch customisation, and shipment management, are supported by the schema.
+By grouping the FAHAJ database's business data into ten linked tables, the relational schema offers an organised depiction of the database. A foreign key is used to establish relationships between tables, while a primary key is used to uniquely identify records. The organization's main operations, such as supplier administration, inventory monitoring, customer registration, order processing, watch customisation, and shipment management, are supported by the schema.
